@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GiaCat_AI_Audit_Event_Schema",
+  "description": "Định nghĩa cấu trúc dữ liệu cho các sự kiện giao dịch được gán nhãn AI để phục vụ học máy và tối ưu hóa hệ thống phòng vệ rủi ro.",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "event_id",
+    "event_type",
+    "regime",
+    "metrics",
+    "ai_classification"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Thời gian xảy ra sự kiện (GMT hoặc Broker Time)"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Mã định danh duy nhất của sự kiện"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": ["ENTRY", "DCA", "TRIM", "EMERGENCY_ACTION", "CLOSE"],
+      "description": "Loại hành động giao dịch thực thi"
+    },
+    "regime": {
+      "type": "string",
+      "enum": ["RANGING", "TRANSITION", "TRENDING"],
+      "description": "Trạng thái thị trường tại thời điểm xảy ra sự kiện"
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "adx_h1",
+        "atr_h1",
+        "spread_points",
+        "floating_dd_pct",
+        "margin_level",
+        "basket_age_seconds"
+      ],
+      "properties": {
+        "adx_h1": { "type": "number", "minimum": 0, "maximum": 100 },
+        "atr_h1": { "type": "number", "minimum": 0 },
+        "spread_points": { "type": "integer", "minimum": 0 },
+        "floating_dd_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "margin_level": { "type": "number", "minimum": 0 },
+        "basket_age_seconds": { "type": "integer", "minimum": 0 },
+        "adverse_excursion_points": { "type": "number", "minimum": 0 }
+      }
+    },
+    "ai_classification": {
+      "type": "object",
+      "required": [
+        "classification_label",
+        "confidence_score",
+        "failure_mode",
+        "recovery_pattern"
+      ],
+      "properties": {
+        "classification_label": {
+          "type": "string",
+          "enum": [
+            "GOOD_DCA",
+            "BAD_DCA",
+            "TREND_TRAP",
+            "VOLATILITY_KILL",
+            "RECOVERY_SUCCESS",
+            "EARLY_EXIT_WIN"
+          ],
+          "description": "Nhãn phân loại sự kiện của hệ thống AI cố vấn"
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Độ tin cậy của phân loại AI"
+        },
+        "failure_mode": {
+          "type": "string",
+          "enum": ["NONE", "MARGIN_SQUEEZE", "TREND_OVERRUN", "LIQUIDITY_SHOCK", "OVEREXP_VETO"],
+          "description": "Phân loại chế độ lỗi nếu sự kiện dẫn đến kết quả xấu"
+        },
+        "recovery_pattern": {
+          "type": "string",
+          "enum": ["NONE", "MEAN_REVERSION", "GRID_STRETCH", "TRIM_DISSOLVE", "FORCE_LIQUIDATION"],
+          "description": "Mô hình hồi phục giúp thoát rổ lệnh thành công"
+        },
+        "advisory_notes": {
+          "type": "string",
+          "description": "Ý kiến phân tích hoặc khuyến nghị của AI cho lần tối ưu tiếp theo"
+        }
+      }
+    }
+  }
+}

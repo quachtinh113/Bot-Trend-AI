@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026.05.23 21:40:00",
+  "validator_status": "PASSED",
+  "env_loaded": true,
+  "account_verified": true,
+  "margin_level_safe": true,
+  "margin_level": 9999.00,
+  "is_demo_account": true,
+  "guard_message": "Tai khoan hop le va an toan."
+}

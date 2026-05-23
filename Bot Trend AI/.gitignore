@@ -1,0 +1,30 @@
+# ====================================================================
+# GIA CAT SECURE GITIGNORE
+# ====================================================================
+
+# Bỏ qua tệp cấu hình chứa thông tin tài khoản thực
+.env
+
+# Bỏ qua các tệp logs và audit telemetry
+*.log
+GiaCat_Audit_Log.csv
+GiaCat_Audit_Log.json
+GiaCat_Timeline.csv
+
+# Bỏ qua các tệp tạm thời và backup
+*.bak
+*.tmp
+*.temp
+simple_test.mq5
+simple_test.ex5
+mock_test_ea.ex5
+mock_test_ea_v2.ex5
+deployment_validator.ex5
+
+# Bỏ qua thư mục sinh ra bởi python (.idea, venv, pycache)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/

@@ -1,0 +1,168 @@
+GIỚI THIỆU CƠ BẢN - GIA CAT COIN TREND GRID BOT
+================================================
+
+1. Tổng Quan
+------------
+Gia Cat Coin Trend Grid Bot là Expert Advisor (EA) dành cho nền tảng MetaTrader 5. Bot được thiết kế để hỗ trợ giao dịch tự động theo hai chế độ chính:
+
+- TREND ZLEMA: ưu tiên giao dịch theo xu hướng, kết hợp SuperTrend, ZLEMA, RSI, EMA và các bộ lọc chất lượng điểm vào.
+- DCA GRID: quản lý lưới DCA hai chiều, kết hợp vùng hỗ trợ/kháng cự, ATR Dynamic Grid và cơ chế thoát rổ lệnh.
+
+Bot phù hợp với người dùng đã hiểu rủi ro của giao dịch tự động, đặc biệt là chiến lược DCA/Grid và quản lý ký quỹ.
+
+
+2. Tính Năng Chính
+------------------
+- Tự động mở lệnh theo chế độ Trend hoặc DCA Grid.
+- Chế độ AUTO có thể chuyển đổi giữa Trend và DCA Grid theo tín hiệu ADX/AI.
+- Quản lý rổ lệnh bằng BE/TP theo điểm hoặc theo tiền.
+- Hỗ trợ trailing stop cho từng lệnh và trailing stop theo cả rổ.
+- Trim Manager giúp dùng lợi nhuận của lệnh thắng để cắt/tỉa bớt lệnh đang kẹt.
+- Trend Rescue Cover: khi xu hướng đảo chiều, bot có thể mở rổ thuận trend để hỗ trợ xử lý rổ ngược trend đang âm.
+- Bộ lọc tin tức, spread, storm protection, hard drawdown stop, daily target và equity trailing.
+- Giao thức cuối tuần: dừng mở base mới vào Thứ 6, vẫn xử lý rổ đang chạy, và có thể đóng sạch lệnh trước cuối tuần.
+- Cơ chế trì hoãn bật bot vào Thứ 2 để giảm rủi ro gap đầu tuần.
+- Dashboard trực quan trên chart và thông báo qua Telegram.
+
+
+3. Lưu Ý Trước Khi Sử Dụng
+--------------------------
+- EA không đảm bảo lợi nhuận. Mọi chiến lược DCA/Grid đều có rủi ro cao khi thị trường đi một chiều mạnh.
+- Người dùng nên backtest và forward test trên tài khoản demo trước khi chạy tài khoản thật.
+- Cần cài đặt lot, số lệnh tối đa, giới hạn drawdown và bộ lọc spread phù hợp với số vốn.
+- Không nên tắt các cơ chế bảo vệ rủi ro nếu chưa hiểu rõ tác động.
+- Kết quả giao dịch có thể khác nhau tùy broker, spread, commission, swap, slippage và chất lượng dữ liệu.
+
+
+4. Bảo Mật Và Thời Hạn Sử Dụng
+------------------------------
+Phiên bản thương mại của EA có thể được cài thời hạn sử dụng theo số tháng.
+
+Khi quá hạn sử dụng:
+- EA tự động tạm dừng.
+- Không mở thêm lệnh mới.
+- Dashboard hiển thị trạng thái LICENSE EXP.
+- Người dùng cần liên hệ bên cung cấp để gia hạn hoặc nhận bản build mới.
+
+
+5. Khuyến Nghị Vận Hành
+-----------------------
+- Nên chạy EA trên VPS ổn định.
+- Gắn EA đúng symbol đã được tối ưu trong preset.
+- Luôn kiểm tra AutoTrading của MT5 đã được bật.
+- Cấp quyền WebRequest nếu sử dụng Telegram, News Filter hoặc license online trong các bản nâng cao.
+- Theo dõi margin level, drawdown và số lệnh đang mở.
+- Nên dùng preset riêng cho từng tài khoản, từng symbol và từng mức vốn.
+
+
+6. Hướng Dẫn Cài Đặt Cơ Bản
+---------------------------
+Trước khi chạy bot, người dùng cần chuẩn bị đúng các file và cài đặt sau:
+
+6.1. File cần copy vào MT5
+- File EA chính: Giacat_Trend_Grid.ex5
+  Đặt vào thư mục: MQL5/Experts
+
+- Indicator phụ trợ:
+  + SuperTrend.ex5
+  + GiaCatCoin_Indi.ex5
+  Đặt vào thư mục: MQL5/Indicators
+
+- File AI nếu có sử dụng bộ lọc AI:
+  + trend_detector.onnx
+  Đặt vào thư mục: MQL5/Files hoặc đúng thư mục được bên cung cấp hướng dẫn.
+
+Nếu thiếu indicator hoặc file AI cần thiết, EA có thể không khởi động được hoặc sẽ tắt một số chức năng lọc tín hiệu.
+
+
+6.2. Bật quyền chạy EA trong MT5
+Vào menu:
+Tools -> Options -> Expert Advisors
+
+Sau đó bật các mục:
+- Allow algorithmic trading
+- Allow DLL imports nếu bên cung cấp yêu cầu. Nếu không được yêu cầu thì có thể để tắt.
+- Allow WebRequest for listed URL nếu dùng Telegram, tin tức hoặc license online.
+
+
+6.3. Cài link WebRequest cho Telegram
+Nếu sử dụng Telegram, cần thêm đường link sau vào danh sách WebRequest:
+
+https://api.telegram.org
+
+Cách thêm:
+Tools -> Options -> Expert Advisors -> Allow WebRequest for listed URL
+
+Nhấn dấu cộng hoặc thêm dòng mới, sau đó nhập:
+https://api.telegram.org
+
+
+6.4. Tạo Telegram Bot Token
+Để nhận thông báo và điều khiển bot qua Telegram:
+
+1. Mở Telegram.
+2. Tìm tài khoản BotFather.
+3. Gửi lệnh:
+   /newbot
+4. Đặt tên bot theo hướng dẫn.
+5. BotFather sẽ trả về một chuỗi Bot Token.
+6. Copy Bot Token này vào input InpBotToken của EA.
+
+Lưu ý: không chia sẻ Bot Token cho người khác.
+
+
+6.5. Lấy Telegram Chat ID
+Cách đơn giản:
+
+1. Gửi một tin nhắn bất kỳ cho bot Telegram vừa tạo.
+2. Mở trình duyệt và truy cập:
+   https://api.telegram.org/bot<BOT_TOKEN>/getUpdates
+
+Trong đó thay <BOT_TOKEN> bằng token thật của bot.
+
+3. Tìm phần "chat" và lấy giá trị "id".
+4. Copy giá trị id này vào input InpChatID của EA.
+
+Ví dụ đường link sau khi thay token sẽ có dạng:
+https://api.telegram.org/bot123456789:ABCDEF/getUpdates
+
+
+6.6. Các input Telegram trong EA
+Trong bảng input của EA:
+
+- InpUseTelegram = true
+  Bật gửi thông báo Telegram.
+
+- InpUseTelegramTwoWay = true
+  Bật điều khiển hai chiều qua Telegram, ví dụ: /status, /pause, /resume, /closeall.
+
+- InpBotToken
+  Nhập Bot Token lấy từ BotFather.
+
+- InpChatID
+  Nhập Chat ID của người dùng hoặc nhóm Telegram.
+
+
+6.7. Các bước gắn bot lên chart
+1. Mở MT5.
+2. Copy đầy đủ các file EA/indicator vào đúng thư mục.
+3. Khởi động lại MT5 hoặc nhấn Refresh trong Navigator.
+4. Mở chart đúng symbol cần chạy.
+5. Kéo EA Giacat_Trend_Grid vào chart.
+6. Nạp file preset nếu bên cung cấp có gửi kèm.
+7. Kiểm tra các thông số lot, spread, drawdown, Telegram và thời gian giao dịch.
+8. Bật AutoTrading trên thanh công cụ MT5.
+9. Quan sát dashboard trên chart để chắc chắn bot đang ở trạng thái RUNNING.
+
+
+6.8. Lưu ý khi chạy lần đầu
+- Nên chạy thử trên tài khoản demo trước.
+- Không nên đổi preset khi đang có nhiều lệnh mở nếu chưa hiểu rõ cơ chế.
+- Nếu dashboard báo thiếu indicator, cần kiểm tra lại thư mục MQL5/Indicators.
+- Nếu Telegram không nhận tin, kiểm tra lại Bot Token, Chat ID và link WebRequest.
+- Nếu bot không mở lệnh, kiểm tra AutoTrading, spread, tin tức, giờ cuối tuần, license và trạng thái risk trên dashboard.
+
+
+7. Hỗ Trợ
+---------
+Nếu cần cài đặt, gia hạn license, tối ưu preset hoặc kiểm tra lỗi vận hành, vui lòng liên hệ bên cung cấp bot.
