@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "quant_survival_engine"
+    static_configs:
+      - targets: ["localhost:8000"] # Streamlit metrics API exporter
+    metrics_path: "/metrics"

@@ -1,10 +1,10 @@
 # Báo Cáo Kiểm Duyệt Triển Khai (Deployment Check Report)
-> Thời gian chạy kiểm duyệt: **2026.05.23 21:40:00**
+> Thời gian chạy kiểm duyệt: **2026.05.24 06:30:00**
 
 ## 📊 KẾT QUẢ KIỂM DUYỆT TỔNG QUAN
 - **Trạng thái tài khoản:** `PASSED` (Tai khoan hop le va an toan.)
 - **Tải cấu hình .env:** `LOADED`
-- **Mức ký quỹ tài khoản:** `SAFE` (Margin Level = 9999.00%)
+- **Mức ký quỹ tài khoản:** `SAFE` (Margin Level = 76360.99%)
 - **Môi trường tài khoản:** `DEMO/TESTING`
 
 ## 🛠️ CHI TIẾT TÌNH TRẠNG MODULES

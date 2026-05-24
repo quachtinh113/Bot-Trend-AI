@@ -1,0 +1,34 @@
+{
+  "forbidden_tools": [
+    {
+      "name": "unrestricted_shell",
+      "description": "Unconstrained terminal access outside project scope.",
+      "veto_action": "REJECT_CALL"
+    },
+    {
+      "name": "unrestricted_repo_scan",
+      "description": "Broad recursive scanning of parent repo.",
+      "veto_action": "REJECT_CALL"
+    },
+    {
+      "name": "full_disk_scan",
+      "description": "Any scan operations outside the immediate workspace.",
+      "veto_action": "REJECT_CALL"
+    },
+    {
+      "name": "live_trade_execution",
+      "description": "Submitting live market or pending orders to real accounts.",
+      "veto_action": "REJECT_CALL"
+    },
+    {
+      "name": "credential_reader",
+      "description": "Reading absolute password blocks or private keys.",
+      "veto_action": "REJECT_CALL"
+    },
+    {
+      "name": "auto_refactor",
+      "description": "Autonomous large-scale refactoring of protected risk blocks.",
+      "veto_action": "REJECT_CALL"
+    }
+  ]
+}

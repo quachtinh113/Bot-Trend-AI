@@ -96,7 +96,7 @@ public:
       if(m_spread_counter > 0) {
          return m_spread_accumulator / m_spread_counter;
       }
-      return SymbolInfoInteger(m_symbol, SYMBOL_SPREAD);
+      return (double)SymbolInfoInteger(m_symbol, SYMBOL_SPREAD);
    }
 
    // Hàm đo lường các chỉ số rủi ro thực tế (Real-time Metrics)

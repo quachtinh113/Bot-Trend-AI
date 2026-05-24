@@ -1,0 +1,328 @@
+{
+  "quant_workspace\\core\\dto\\signals.py": {
+    "type": "python",
+    "imports": [
+      "pydantic.BaseModel",
+      "datetime.datetime"
+    ],
+    "classes": {
+      "SignalProposal": {
+        "methods": [],
+        "line": 4
+      }
+    },
+    "functions": []
+  },
+  "quant_workspace\\core\\schemas\\trading.py": {
+    "type": "python",
+    "imports": [
+      "pydantic.BaseModel",
+      "typing.Optional",
+      "datetime.datetime"
+    ],
+    "classes": {
+      "AccountState": {
+        "methods": [],
+        "line": 5
+      },
+      "OrderRequest": {
+        "methods": [],
+        "line": 16
+      }
+    },
+    "functions": []
+  },
+  "quant_workspace\\dashboard\\visualizer.py": {
+    "type": "python",
+    "imports": [
+      "streamlit",
+      "pandas",
+      "json",
+      "os",
+      "time"
+    ],
+    "classes": {},
+    "functions": []
+  },
+  "quant_workspace\\risk\\risk_engine.py": {
+    "type": "python",
+    "imports": [
+      "typing.Tuple",
+      "core.schemas.trading.AccountState",
+      "structlog"
+    ],
+    "classes": {
+      "ConstitutionalRiskEngine": {
+        "methods": [
+          "__init__",
+          "evaluate_account_safety",
+          "evaluate_order"
+        ],
+        "line": 7
+      }
+    },
+    "functions": [
+      "__init__",
+      "evaluate_account_safety",
+      "evaluate_order"
+    ]
+  },
+  "quant_workspace\\scripts\\build_code_graph.py": {
+    "type": "python",
+    "imports": [
+      "os",
+      "ast",
+      "json",
+      "re"
+    ],
+    "classes": {},
+    "functions": [
+      "parse_python_file",
+      "parse_mql_file",
+      "build_graph"
+    ]
+  },
+  "quant_workspace\\tests\\test_risk_engine.py": {
+    "type": "python",
+    "imports": [
+      "pytest",
+      "core.schemas.trading.AccountState",
+      "risk.risk_engine.ConstitutionalRiskEngine"
+    ],
+    "classes": {},
+    "functions": [
+      "risk_engine",
+      "test_safe_order_approval",
+      "test_hard_kill_drawdown_veto",
+      "test_safe_mode_basket_veto_and_dca_approval",
+      "test_low_margin_dca_veto",
+      "test_lot_size_veto"
+    ]
+  },
+  "Bot Trend AI\\config_loader.py": {
+    "type": "python",
+    "imports": [
+      "os",
+      "re",
+      "dotenv.load_dotenv"
+    ],
+    "classes": {},
+    "functions": [
+      "mask_login",
+      "mask_telegram_token",
+      "load_and_validate_config",
+      "print_safe_config"
+    ]
+  },
+  "Bot Trend AI\\deployment_validator.mq5": {
+    "type": "mql5",
+    "includes": [
+      "Include/GiaCat/regime_engine.mqh",
+      "Include/GiaCat/volatility_engine.mqh",
+      "Include/GiaCat/session_governor.mqh",
+      "Include/GiaCat/equity_defense.mqh",
+      "Include/GiaCat/audit_logger.mqh",
+      "Include/GiaCat/portfolio_engine.mqh",
+      "Include/GiaCat/basket_intelligence.mqh",
+      "Include/GiaCat/predictive_volatility.mqh",
+      "Include/GiaCat/smart_dca_engine.mqh",
+      "Include/GiaCat/survival_score_engine.mqh",
+      "Include/GiaCat/account_guard.mqh",
+      "Include/GiaCat/runtime_control.mqh"
+    ],
+    "classes": {}
+  },
+  "Bot Trend AI\\mock_test_ea.mq5": {
+    "type": "mql5",
+    "includes": [
+      "Include/GiaCat/regime_engine.mqh",
+      "Include/GiaCat/volatility_engine.mqh",
+      "Include/GiaCat/session_governor.mqh",
+      "Include/GiaCat/equity_defense.mqh",
+      "Include/GiaCat/audit_logger.mqh"
+    ],
+    "classes": {}
+  },
+  "Bot Trend AI\\mock_test_ea_v2.mq5": {
+    "type": "mql5",
+    "includes": [
+      "Include/GiaCat/regime_engine.mqh",
+      "Include/GiaCat/volatility_engine.mqh",
+      "Include/GiaCat/session_governor.mqh",
+      "Include/GiaCat/equity_defense.mqh",
+      "Include/GiaCat/audit_logger.mqh",
+      "Include/GiaCat/portfolio_engine.mqh",
+      "Include/GiaCat/basket_intelligence.mqh",
+      "Include/GiaCat/predictive_volatility.mqh",
+      "Include/GiaCat/smart_dca_engine.mqh",
+      "Include/GiaCat/survival_score_engine.mqh"
+    ],
+    "classes": {}
+  },
+  "Bot Trend AI\\run_bot.py": {
+    "type": "python",
+    "imports": [
+      "os",
+      "time",
+      "subprocess",
+      "dotenv.load_dotenv"
+    ],
+    "classes": {},
+    "functions": [
+      "find_terminal_path",
+      "launch_bot"
+    ]
+  },
+  "Bot Trend AI\\stop_bot.py": {
+    "type": "python",
+    "imports": [
+      "os",
+      "time",
+      "subprocess",
+      "MetaTrader5",
+      "MetaTrader5"
+    ],
+    "classes": {},
+    "functions": [
+      "main"
+    ]
+  },
+  "Bot Trend AI\\Include\\GiaCat\\account_guard.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CAccountGuard": {
+        "methods": [],
+        "line": 15
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\audit_logger.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CAuditLogger": {
+        "methods": [],
+        "line": 6
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\basket_intelligence.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CBasketIntelligence": {
+        "methods": [],
+        "line": 26
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\equity_defense.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CEquityDefense": {
+        "methods": [],
+        "line": 24
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\forward_test_logger.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CForwardTestLogger": {
+        "methods": [],
+        "line": 6
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\portfolio_engine.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "ICorrelationManager": {
+        "methods": [],
+        "line": 14
+      },
+      "CStaticCorrelationManager": {
+        "methods": [],
+        "line": 21
+      },
+      "CPortfolioEngine": {
+        "methods": [],
+        "line": 71
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\predictive_volatility.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CPredictiveVolatility": {
+        "methods": [],
+        "line": 6
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\regime_engine.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CRegimeEngine": {
+        "methods": [],
+        "line": 24
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\runtime_control.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CRuntimeControl": {
+        "methods": [],
+        "line": 16
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\session_governor.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CSessionGovernor": {
+        "methods": [],
+        "line": 15
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\smart_dca_engine.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CSmartDCAEngine": {
+        "methods": [],
+        "line": 6
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\survival_score_engine.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CSurvivalScoreEngine": {
+        "methods": [],
+        "line": 15
+      }
+    }
+  },
+  "Bot Trend AI\\Include\\GiaCat\\volatility_engine.mqh": {
+    "type": "mql5",
+    "includes": [],
+    "classes": {
+      "CVolatilityEngine": {
+        "methods": [],
+        "line": 6
+      }
+    }
+  }
+}

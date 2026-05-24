@@ -58,7 +58,7 @@ public:
       m_symbol = symbol;
       
       // Nếu biến toàn cục chưa tồn tại, khởi tạo mặc định là RUN_NORMAL (0)
-      if(!GlobalVariableExist(m_gv_key)) {
+      if(!GlobalVariableCheck(m_gv_key)) {
          GlobalVariableSet(m_gv_key, (double)RUN_NORMAL);
       }
    }

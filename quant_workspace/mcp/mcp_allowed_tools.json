@@ -1,0 +1,57 @@
+{
+  "allowed_tools": [
+    {
+      "name": "file_read_scoped",
+      "description": "Reads text files located strictly inside the quant_workspace directory.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" }
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "grep_limited",
+      "description": "Searches for matching strings limited to 50 results in a specified file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "required": ["query", "path"]
+      }
+    },
+    {
+      "name": "run_targeted_tests",
+      "description": "Runs targeted unit tests via pytest on a single test file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "test_file": { "type": "string" }
+        },
+        "required": ["test_file"]
+      }
+    },
+    {
+      "name": "risk_summary",
+      "description": "Fetches safe summary metrics from CSurvivalScoreEngine.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "compile_check",
+      "description": "Performs compiler syntax validation via metaeditor64.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file": { "type": "string" }
+        },
+        "required": ["file"]
+      }
+    }
+  ]
+}

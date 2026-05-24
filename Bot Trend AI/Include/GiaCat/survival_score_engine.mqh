@@ -53,12 +53,12 @@ public:
       
       // Đọc tuần lưu trước đó từ Global Variable
       long last_week_index = 0;
-      if(GlobalVariableExist(m_gv_weekly_index_key)) {
+      if(GlobalVariableCheck(m_gv_weekly_index_key)) {
          last_week_index = (long)GlobalVariableGet(m_gv_weekly_index_key);
       }
       
       // Nếu là tuần mới hoặc chưa từng khởi tạo biến toàn cầu
-      if(curr_week_index != last_week_index || !GlobalVariableExist(m_gv_weekly_equity_key)) {
+      if(curr_week_index != last_week_index || !GlobalVariableCheck(m_gv_weekly_equity_key)) {
          double current_equity = AccountInfoDouble(ACCOUNT_EQUITY);
          GlobalVariableSet(m_gv_weekly_equity_key, current_equity);
          GlobalVariableSet(m_gv_weekly_index_key, (double)curr_week_index);

@@ -110,11 +110,11 @@ public:
       datetime timeTo = timeCur + (m_news_before_min * 60);
 
       // Lấy lịch sử tin tức trong khoảng thời gian này
-      int count = CalendarValueHistoryGet(values, timeFrom, timeTo);
+      int count = CalendarValueHistory(values, timeFrom, timeTo);
       if(count > 0) {
          for(int i = 0; i < count; i++) {
             MqlCalendarEvent event;
-            if(CalendarEventGet(values[i].event_id, event)) {
+            if(CalendarEventById(values[i].event_id, event)) {
                // Chỉ lọc tin quan trọng (Cao - High)
                // tầm quan trọng: CALENDAR_IMPORTANCE_HIGH = 3
                if(event.importance == CALENDAR_IMPORTANCE_HIGH) {
@@ -122,10 +122,14 @@ public:
                   string currency = SymbolInfoString(m_symbol, SYMBOL_CURRENCY_BASE);
                   string profitCur = SymbolInfoString(m_symbol, SYMBOL_CURRENCY_PROFIT);
                   
-                  if(event.code == "USD" || event.code == currency || event.code == profitCur) {
-                     newsDescription = StringFormat("Tin quan trong [%s]: %s vao luc %s", 
-                                                    event.code, event.name, TimeToString(values[i].time, TIME_DATE|TIME_MINUTES));
-                     return true; // Phát hiện tin tức cấm giao dịch
+                  MqlCalendarCountry country;
+                  if(CalendarCountryById(event.country_id, country)) {
+                     string eventCurrency = country.currency;
+                     if(eventCurrency == "USD" || eventCurrency == currency || eventCurrency == profitCur) {
+                        newsDescription = StringFormat("Tin quan trong [%s]: %s vao luc %s", 
+                                                       eventCurrency, event.name, TimeToString(values[i].time, TIME_DATE|TIME_MINUTES));
+                        return true; // Phát hiện tin tức cấm giao dịch
+                     }
                   }
                }
             }

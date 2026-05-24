@@ -123,7 +123,7 @@ public:
       }
 
       // 3. Tính toán gia tốc biến động (ATR Acceleration - Khung M15)
-      double atr_arr[5];
+      double atr_arr[];
       ArraySetAsSeries(atr_arr, true);
       if(CopyBuffer(m_atr_handle, 0, 0, 5, atr_arr) <= 0) {
          reason = "Lỗi đọc dữ liệu ATR M15";

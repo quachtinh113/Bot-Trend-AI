@@ -55,7 +55,7 @@ public:
       
       m_adx_handle = iADX(m_symbol, m_tf, 14);
       m_atr_handle = iATR(m_symbol, m_tf, 14);
-      m_rsi_handle = iRSI(m_symbol, m_tf, 14);
+      m_rsi_handle = iRSI(m_symbol, m_tf, 14, PRICE_CLOSE);
       
       if(m_adx_handle == INVALID_HANDLE || m_atr_handle == INVALID_HANDLE || m_rsi_handle == INVALID_HANDLE) {
          Print("GiaCat RegimeEngine: Lỗi khởi tạo chỉ báo kỹ thuật!");

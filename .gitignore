@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+temp_validator_config.ini
+compile_log.txt
+compile_log_ea.txt
+*.ex5
