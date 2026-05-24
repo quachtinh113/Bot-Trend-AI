@@ -1,4 +1,48 @@
 {
+  "quant_workspace\\core\\contracts\\execution.py": {
+    "type": "python",
+    "imports": [
+      "abc.ABC",
+      "pydantic.BaseModel",
+      "typing.Optional",
+      "datetime.datetime",
+      "core.schemas.trading.OrderRequest"
+    ],
+    "classes": {
+      "ExecutionResult": {
+        "methods": [],
+        "line": 7
+      },
+      "ExecutionGateway": {
+        "methods": [
+          "submit_order"
+        ],
+        "line": 15
+      }
+    },
+    "functions": [
+      "submit_order"
+    ]
+  },
+  "quant_workspace\\core\\contracts\\strategy.py": {
+    "type": "python",
+    "imports": [
+      "abc.ABC",
+      "typing.Dict",
+      "core.dto.signals.SignalProposal"
+    ],
+    "classes": {
+      "StrategyContract": {
+        "methods": [
+          "generate_signal"
+        ],
+        "line": 5
+      }
+    },
+    "functions": [
+      "generate_signal"
+    ]
+  },
   "quant_workspace\\core\\dto\\signals.py": {
     "type": "python",
     "imports": [
@@ -44,6 +88,29 @@
     "classes": {},
     "functions": []
   },
+  "quant_workspace\\execution\\mock_gateway.py": {
+    "type": "python",
+    "imports": [
+      "core.contracts.execution.ExecutionGateway",
+      "core.schemas.trading.OrderRequest",
+      "datetime.datetime",
+      "structlog",
+      "random"
+    ],
+    "classes": {
+      "MockExecutionGateway": {
+        "methods": [
+          "__init__",
+          "submit_order"
+        ],
+        "line": 9
+      }
+    },
+    "functions": [
+      "__init__",
+      "submit_order"
+    ]
+  },
   "quant_workspace\\risk\\risk_engine.py": {
     "type": "python",
     "imports": [
@@ -80,6 +147,20 @@
       "parse_python_file",
       "parse_mql_file",
       "build_graph"
+    ]
+  },
+  "quant_workspace\\tests\\test_mock_execution_gateway.py": {
+    "type": "python",
+    "imports": [
+      "pytest",
+      "core.schemas.trading.OrderRequest",
+      "execution.mock_gateway.MockExecutionGateway"
+    ],
+    "classes": {},
+    "functions": [
+      "mock_gateway",
+      "test_approved_order_is_accepted",
+      "test_vetoed_order_is_rejected"
     ]
   },
   "quant_workspace\\tests\\test_risk_engine.py": {

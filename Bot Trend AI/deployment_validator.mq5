@@ -6,7 +6,7 @@
 #property copyright "Copyright 2026, Bot Trend AI"
 #property link      "https://www.mql5.com"
 #property version   "3.00"
-#property script_show_inputs
+//#property script_show_inputs
 
 // Include toàn bộ 10 module rủi ro để kiểm chứng liên kết biên dịch
 #include "Include/GiaCat/regime_engine.mqh"
